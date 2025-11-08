@@ -14,9 +14,11 @@ export default function BookingModal({ item, onClose, onCreated }) {
         item: item._id, startDate, endDate, quantity, notes
       });
       onCreated(res.data);
+      toast.success('Request created successfully');
       onClose();
     }catch(err){
-      alert(err?.response?.data?.error || 'Booking failed');
+    toast.error(err?.response?.data?.error || 'Booking failed');
+    //   alert(err?.response?.data?.error || 'Booking failed');
     }
   }
 

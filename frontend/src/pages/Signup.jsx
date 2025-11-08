@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 export default function Signup(){
   const { signup } = useAuth();
   const nav = useNavigate();
@@ -15,9 +15,12 @@ export default function Signup(){
     setErr('');
     try{
       await signup(name, email, password, 'student');
+      toast.success('Account created successfully!');
       nav('/');
     }catch(error){
-      setErr(error.message);
+      const msg = error.message || 'Signup failed. Please try again.';
+      setErr(msg);
+      toast.error(` ${msg}`);
     }
   }
 

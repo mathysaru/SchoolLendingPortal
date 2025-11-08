@@ -2,28 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --neu-bg: #f8fafc;
-  --neu-shadow: rgba(16,24,40,0.06);
+/* Neumorphism base + theme */
+:root {
+  --bg: #e0e5ec;          /* soft grey background */
+  --card: #f0f3f7;        /* slightly lighter card */
+  --shadow-dark: rgba(163,177,198,0.6);  /* soft dark shadow */
+  --shadow-light: rgba(255,255,255,0.8); /* soft light highlight */
+  --muted: #7b8a99;       /* muted text */
+  --radius: 20px;         /* more rounded for neumorphism */
+  --primary: black;     /* accent color for buttons / links */
+  --primary-dark: #574fd6;
 }
 
+/* Body */
 body {
   font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  background: var(--bg);
+  min-height: 100vh;
 }
 
-/* Neumorphism card */
+/* Neumorphic card */
 .card-neu {
-  background: linear-gradient(180deg, #ffffff, #f3f6ff);
-  border-radius: 14px;
-  box-shadow: 8px 8px 18px rgba(16,24,40,0.06), -8px -8px 18px rgba(255,255,255,0.8);
+  background: var(--card);
+  border-radius: 15px;
+  box-shadow: 
+  3px 4px 15px var(--shadow-dark),
+    -6px -3px 10px var(--shadow-light);
+  padding: 1rem;
+  transition: all 0.3s ease;
 }
 
-/* soft button */
+/* Hover effect for card */
+.card-neu:hover {
+  box-shadow: 
+    3px 4px 15px var(--shadow-dark),
+    -6px -3px 10px var(--shadow-light);
+    
+}
+
+/* Soft buttons */
 .btn-soft {
-  background: linear-gradient(180deg, #2563eb, #1e40af);
-  color: white;
+  background: var(--card);
+  color: #000;
   border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 400;
+  box-shadow: 6px 6px 12px var(--shadow-dark),
+              -6px -6px 12px var(--shadow-light);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+/* Button hover */
+.btn-soft:hover {
+  box-shadow: 4px 4px 8px var(--shadow-dark),
+              -4px -4px 8px var(--shadow-light);
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, #e5e9f2, #f5f9ff);
+}
+
+/* Inputs */
+input, textarea, select {
+  border-radius: var(--radius);
+  border: none;
   padding: 0.6rem 1rem;
-  font-weight: 600;
+  background: var(--card);
+  box-shadow: inset 6px 6px 12px var(--shadow-dark),
+              inset -6px -6px 12px var(--shadow-light);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Input focus */
+input:focus, textarea:focus, select:focus {
+  box-shadow: inset 4px 4px 8px var(--shadow-dark),
+              inset -4px -4px 8px var(--shadow-light);
+  background: #f7f9fc;
+}
+
+/* Modal background */
+.modal-backdrop {
+  background: rgba(0,0,0,0.5);
+}
+
+/* Small helpers */
+.text-muted { color: var(--muted); }
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* Navbar soft card */
+.navbar-neu {
+  background: var(--card);
+  box-shadow: 6px 6px 12px var(--shadow-dark),
+              -6px -6px 12px var(--shadow-light);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
 }

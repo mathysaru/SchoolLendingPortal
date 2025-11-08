@@ -10,7 +10,7 @@ async function run() {
       process.exit(1);
     }
     await mongoose.connect(process.env.MONGO_URI);
-    const email = process.env.ADMIN_EMAIL || 'admin@school.test';
+    const email = process.env.ADMIN_EMAIL || 'admin@hotmail.com';
     const pass = process.env.ADMIN_PASS || 'admin123';
     let u = await User.findOne({ email });
     if (u) {

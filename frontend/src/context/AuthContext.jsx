@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import api from '../api';
-
+import { toast } from 'react-toastify';
 const AuthContext = createContext();
 export function useAuth(){ return useContext(AuthContext); }
 
@@ -43,10 +43,11 @@ export function AuthProvider({ children }){
     }
   }
 
-  function logout(){
-    setUser(null);
-    setToken(null);
-  }
+ function logout() {
+  setUser(null);
+  setToken(null);
+  toast.info('Logged out successfully');
+}
 
   return (
     <AuthContext.Provider value={{ user, token, login, signup, logout }}>
