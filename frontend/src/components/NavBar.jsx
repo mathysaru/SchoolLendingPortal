@@ -50,12 +50,31 @@ export default function NavBar() {
           )}
 
           {(user?.role === "admin" || user?.role === "staff") && (
-            <Link
-              to="/manage"
-              className="px-4 py-2 rounded card-neu hover:shadow-md transition"
-            >
-              Manage
-            </Link>
+            <>
+              <Link
+                to="/manage"
+                className="px-4 py-2 rounded card-neu hover:shadow-md transition"
+              >
+                Manage
+              </Link>
+              <button
+                onClick={handleSwaggerClick}
+                title="API Documentation"
+                style={{
+                  background: "#232f3e",
+                  color: "white",
+                  border: "none",
+                  padding: "8px 12px",
+                  borderRadius: "8px",
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+              >
+                <FaBookOpen style={{ marginRight: "6px" }} />
+                Swagger Docs
+              </button>
+            </>
           )}
 
           {!user ? (
@@ -87,7 +106,6 @@ export default function NavBar() {
                 <span>{user.name}</span>
                 <span className="text-xs text-muted">({user.role})</span>
               </button>
-
               {/* Dropdown */}
               {profileOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-[#f7f9ff] rounded-xl shadow-lg card-neu flex flex-col py-2 z-10">
@@ -138,23 +156,6 @@ export default function NavBar() {
               </div>
             </div>
           )}
-          <button
-            onClick={handleSwaggerClick}
-            title="API Documentation"
-            style={{
-              background: "#232f3e",
-              color: "white",
-              border: "none",
-              padding: "8px 12px",
-              borderRadius: "8px",
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-            }}
-          >
-            <FaBookOpen style={{ marginRight: "6px" }} />
-            Swagger Docs
-          </button>
         </nav>
       </div>
     </header>
