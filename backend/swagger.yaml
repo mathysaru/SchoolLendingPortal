@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: School Equipment Lending Portal API
+  version: 1.0.0
+  description: API Documentation for Equipment Lending Portal
+
+paths:
+  /api/auth/signup:
+    post:
+      summary: Register a new user
+  /api/auth/login:
+    post:
+      summary: Login and get JWT
+  /api/items:
+    get:
+      summary: Get all items
+    post:
+      summary: Add a new item
+  /api/bookings:
+    post:
+      summary: Create a new booking
+    get:
+      summary: Get all bookings
+  /api/bookings/{id}/return:
+    put:
+      summary: Return a booked item

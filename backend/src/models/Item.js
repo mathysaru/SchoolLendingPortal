@@ -6,7 +6,8 @@ const ItemSchema = new mongoose.Schema({
   condition: { type: String, enum: ['new','good','fair','poor'], default: 'good' },
   quantity: { type: Number, default: 1 },
   images: { type: [String], default: [] },
-  description: { type: String, default: '' }
+  description: { type: String, default: '' },
+  available:{type: Boolean}
 }, { timestamps: true });
 
 module.exports = mongoose.model('Item', ItemSchema);

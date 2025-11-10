@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-
+import { FaBookOpen } from "react-icons/fa";
 export default function NavBar() {
   const { user, logout } = useAuth();
   const nav = useNavigate();
   const [profileOpen, setProfileOpen] = useState(false);
   const [confirmLogout, setConfirmLogout] = useState(false);
-  const handleLogout = () => { 
+  const handleLogout = () => {
     setConfirmLogout(false);
     logout();
     nav("/");
+  };
+  const handleSwaggerClick = () => {
+    window.open("http://localhost:5000/api-docs", "_blank");
   };
 
   return (
@@ -98,7 +101,10 @@ export default function NavBar() {
                     </Link>
                   )}
                   <button
-                    onClick={() => {setConfirmLogout(true); setProfileOpen(!profileOpen)}}
+                    onClick={() => {
+                      setConfirmLogout(true);
+                      setProfileOpen(!profileOpen);
+                    }}
                     className="px-4 py-2 hover:bg-[#e1e4f0] rounded transition text-red-600 text-left"
                   >
                     Logout
@@ -132,6 +138,23 @@ export default function NavBar() {
               </div>
             </div>
           )}
+          <button
+            onClick={handleSwaggerClick}
+            title="API Documentation"
+            style={{
+              background: "#232f3e",
+              color: "white",
+              border: "none",
+              padding: "8px 12px",
+              borderRadius: "8px",
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
+            <FaBookOpen style={{ marginRight: "6px" }} />
+            Swagger Docs
+          </button>
         </nav>
       </div>
     </header>

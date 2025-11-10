@@ -6,6 +6,123 @@ const Booking = require('../models/Booking');
 const Item = require('../models/Item');
 
 const router = express.Router();
+/**
+ * @swagger
+ * tags:
+ *   name: Bookings
+ *   description: Equipment booking and returns
+ */
+
+/**
+ * @swagger
+ * /api/bookings:
+ *   post:
+ *     summary: Create a new booking
+ *     tags: [Bookings]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               item:
+ *                 type: string
+ *                 description: ID of the item to book
+ *               startDate:
+ *                 type: string
+ *                 format: date
+ *               endDate:
+ *                 type: string
+ *                 format: date
+ *               quantity:
+ *                 type: integer
+ *               notes:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Booking created successfully
+ *       400:
+ *         description: Validation or quantity error
+ */
+
+/**
+ * @swagger
+ * /api/bookings:
+ *   get:
+ *     summary: Get all bookings (own bookings for students, all for admin/staff)
+ *     tags: [Bookings]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of bookings
+ */
+
+/**
+ * @swagger
+ * /api/bookings/{id}/approve:
+ *   put:
+ *     summary: Approve a booking (Admin/Staff only)
+ *     tags: [Bookings]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Booking approved
+ *       404:
+ *         description: Booking not found
+ */
+
+/**
+ * @swagger
+ * /api/bookings/{id}/reject:
+ *   put:
+ *     summary: Reject a booking (Admin/Staff only)
+ *     tags: [Bookings]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Booking rejected
+ *       404:
+ *         description: Booking not found
+ */
+
+/**
+ * @swagger
+ * /api/bookings/{id}/return:
+ *   put:
+ *     summary: Mark booking as returned
+ *     tags: [Bookings]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Booking marked returned
+ *       404:
+ *         description: Booking not found
+ */
 
 const schema = Joi.object({
   item: Joi.string().required(),
