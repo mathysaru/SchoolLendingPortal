@@ -213,9 +213,11 @@ You can also add a Swagger button in the frontend Navbar for quick navigation:
 
 ## Docker Setup
 
-# Build and run containers
-docker-compose up --build
+Build and run containers
 
+```bash
+docker-compose up --build
+```
 --- 
 
 
