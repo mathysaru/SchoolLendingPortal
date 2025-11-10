@@ -221,10 +221,10 @@ docker-compose up --build
 --- 
 
 
-Author
-
-Sarumathy G
-2024TM93153 – BITS Pilani
-Developed as part of Full Stack Application Development (SE ZG503)
-
+## Author
+ 
+|  **Sarumathy G**  |  
+|  **2024TM93153**  |  
+|  **Developed as part of Full Stack Application Development (SE ZG503)** |
+ 
 ---
