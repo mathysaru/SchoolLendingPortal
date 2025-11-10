@@ -203,10 +203,11 @@ Swagger UI available at:
 👉 http://localhost:5000/api-docs
 
 You can also add a Swagger button in the frontend Navbar for quick navigation:
-
+```bash
 <Button onClick={() => window.open("http://localhost:5000/api-docs", "_blank")}>
   <img src="/swagger-icon.png" alt="Swagger" width="20" /> Swagger Docs
 </Button>
+```
 
 ---
 
